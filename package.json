@@ -1,0 +1,19 @@
+{
+  "dependencies": {
+    "@mediabunny/server": "^1.51.0",
+    "mediabunny": "^1.51.0",
+    "music-tempo": "^1.0.3",
+    "sharp": "^0.35.3"
+  },
+  "name": "editor-video",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module"
+}

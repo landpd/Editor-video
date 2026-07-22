@@ -1,0 +1,95 @@
+● ---
+  Blueprint — extractKeyframe(videoPath)
+
+  ¿Qué hace?
+
+  Abre un video MP4, calcula su duración total, extrae el frame exacto en la mitad del clip, lo codifica como PNG en memoria y lo retorna como string Base64.
+
+  Flujo interno
+
+  videoPath
+    │
+    ├─ path.resolve(videoPath)         ← Normaliza \ y / (Win/Mac)
+    │
+    ├─ new FilePathSource(resolvedPath)
+    │     └─ new Input({ source, formats: ALL_FORMATS })
+    │           ├─ .getPrimaryVideoTrack()  ← obtiene la pista de video
+    │           └─ .computeDuration()       ← duración total en segundos
+    │
+    ├─ midpoint = duration / 2
+    │     └─ new VideoSampleSink(videoTrack)
+    │           └─ .getSample(midpoint)     ← decodifica el frame exacto
+    │
+    ├─ sample.copyTo(buffer, { format: 'RGBA' })
+    │     └─ rgbaToPng(width, height, rgba) ← codifica PNG en memoria (zlib)
+    │
+    └─ Buffer.from(png).toString('base64')  ← string Base64
+
+  Manejo de errores
+
+  - try/catch atrapa cualquier error (archivo no encontrado, corrupto, sin pista de video, codec no soportado).
+  - finally cierra el sample y hace dispose() del Input para liberar el file handle interno de FilePathSource.
+  - Retorna null elegantemente en lugar de lanzar excepción.
+
+  Extracción en memoria (in-memory)
+
+  Todo el pipeline trabaja en memoria sin disco intermedio:
+
+  1. VideoSampleSink — decodifica el frame en memoria. El método getSample(timestamp) busca el último frame con timestamp ≤ midpoint usando el decodificador interno de Mediabunny (no invoca FFmpeg por línea de comandos).
+  2. copyTo({ format: 'RGBA' }) — convierte el frame (que puede estar en YUV, NV12, etc.) a RGBA plano y lo copia a un ArrayBuffer cuya talla exacta se obtiene con allocationSize().
+  3. rgbaToPng() — función puramente JavaScript que empaqueta los raw RGBA en un PNG válido usando solo zlib (built-in de Node.js) para compresión DEFLATE. No hay escritura a disco, no hay dependencias externas.
+  4. Buffer.from(png).toString('base64') — convierte el binario PNG a string Base64 listo para incrustar en HTML <img src="data:image/png;base64,..."> o enviar por API REST.
+
+  Cross-platform
+
+  - path.resolve() normaliza separadores (\ en Windows → / internos, / en macOS → absoluto).
+  - FilePathSource de Mediabunny acepta rutas POSIX-like; path.resolve() garantiza que la entrada sea correcta.
+  - @mediabunny/server con registerMediabunnyServer() habilita decodificadores H.264/HEVC/VP9/AV1 en Node.js, funcionando igual en Windows y macOS.
+
+  Uso
+
+  import { extractKeyframe } from './extract-keyframe.js';
+
+  const base64 = await extractKeyframe('./videos/clip.mp4');
+  if (base64) {
+    console.log(`data:image/png;base64,${base64}`);
+  } else {
+    console.error('No se pudo extraer el keyframe');
+  }
+---
+Resumen de cambios a Blueprint:
+Resumen de los cambios aplicados:
+
+  ┌─────────────────────────────────┬─────────────────────────────────────────────┐
+  │              Antes              │                    Ahora                    │
+  ├─────────────────────────────────┼─────────────────────────────────────────────┤
+  │ 1 frame al 50 %                 │ 2 frames al 25 % y 75 %                     │
+  ├─────────────────────────────────┼─────────────────────────────────────────────┤
+  │ PNG manual con zlib (bloatware) │ sharp con raw RGBA                          │
+  ├─────────────────────────────────┼─────────────────────────────────────────────┤
+  │ Sin redimensionar               │ resize(720) con fit: 'inside', sin agrandar │
+  ├─────────────────────────────────┼─────────────────────────────────────────────┤
+  │ Sin compresión                  │ JPEG quality: 80                            │
+  ├─────────────────────────────────┼─────────────────────────────────────────────┤
+  │ Retorna string | null           │ Retorna string[] | null (dos Base64)        │
+  └─────────────────────────────────┴─────────────────────────────────────────────┘
+
+  Lógica de limpieza de buffers
+
+  sink.getSample(ts)  →  VideoSample (memoria del decoder)
+         │
+         ▼
+  copyTo(buffer, 'RGBA')  →  ArrayBuffer con pixeles planos
+         │
+         ▼
+  sample.close()           ← se libera el sample INMEDIATAMENTE
+  sample[i] = null         ← el finally lo saltea
+         │
+         ▼
+  sharp(rawBuffer)         →  JPEG en un nuevo Buffer
+         │
+         ▼
+  .toString('base64')      →  string Base64
+
+  Cada frame se cierra (vía s.close()) justo después de copiar sus pixeles al ArrayBuffer, no espera a que sharp termine — el pico de memoria es max(1 frame RGBA + 1 JPEG simultáneo) en vez de 2 frames RGBA + 2 JPEG. El
+  finally solo cierra los samples que no alcanzaron a ser procesados por un error intermedio, y luego hace input.dispose() para liberar el file handle de FilePathSource.
