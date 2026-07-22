@@ -16,7 +16,7 @@ import path from 'node:path';
 /**
  * Ejecuta FFmpeg con los parámetros construidos dinámicamente.
  *
- * @param {EditRecipeItem[]} timeline    - Receta de edición (array de { clipName, durationSec }).
+ * @param {EditRecipeItem[]} timeline    - Receta de edición (array de { clipName, durationSec, startFraction, fps }).
  * @param {string}           clipsFolder - Ruta a la carpeta donde están los clips MP4.
  * @param {string}           audioPath   - Ruta al archivo de audio de fondo.
  * @param {string}           outputPath  - Ruta del archivo MP4 de salida.
@@ -36,11 +36,12 @@ export function renderFinalVideo(timeline, clipsFolder, audioPath, outputPath) {
       const clip = timeline[i];
       const clipPath = path.resolve(clipsFolder, clip.clipName);
       const skipSeconds = clip.startFraction > 0 ? 2.5 : 0;
+      const speedFactor = clip.fps > 50 ? '2.0' : '1.0';
                   
       inputs.push('-i', clipPath);
       filters.push(
-        `[${i}:v]trim=start=${skipSeconds}` + 
-        `,setpts=2.0*(PTS-STARTPTS)` + 
+        `[${i}:v]trim=start=${skipSeconds}` +
+        `,setpts=${speedFactor}*(PTS-STARTPTS)` +
         `,trim=duration=${clip.durationSec}` + 
         `,setpts=PTS-STARTPTS` + 
         `,fps=30000/1001` + 

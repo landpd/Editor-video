@@ -31,19 +31,21 @@ export async function buildMetadataMap(folderPath, openRouterKey) {
     const filePath = path.join(folderPath, fileName);
 
     try {
-      const frames = await extractKeyframe(filePath);
-      if (!frames) {
+      const result = await extractKeyframe(filePath);
+      if (!result) {
         console.warn(`[Skip] ${fileName} — extractKeyframe devolvió null`);
         continue;
       }
 
-      const analysis = await analyzeVideoFrames(frames, openRouterKey);
+      const { base64Frames, fps } = result;
+
+      const analysis = await analyzeVideoFrames(base64Frames, openRouterKey);
       if (!analysis) {
         console.warn(`[Skip] ${fileName} — analyzeVideoFrames devolvió null`);
         continue;
       }
 
-      metadata[fileName] = analysis;
+      metadata[fileName] = { ...analysis, fps };
       console.log(`[OK]   ${fileName} → ${analysis.room_type} (score: ${analysis.quality_score})`);
     } catch (err) {
       // Graceful degradation: error interno no debe romper el batch

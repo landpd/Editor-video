@@ -1,6 +1,7 @@
 node_modules/
 .env
 /videos/*.mp4
-/audio/*.mp3
+/musica/*.mp3
 /output/*.mp4
 .DS_Store
+metadata.json

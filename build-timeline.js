@@ -27,6 +27,7 @@ const NARRATIVE_ARC = [
  * @property {string} clipName      - Nombre del archivo de video (ej. "toma_01.mp4").
  * @property {number} durationSec   - Duración del corte en segundos.
  * @property {number} startFraction - Fracción del clip a saltar desde el inicio (0.0-0.5).
+ * @property {number} fps           - Framerate original del clip.
  */
 
 /**
@@ -50,12 +51,12 @@ export function generateTimeline(metadataMap, beatsArray, maxVideoDurationSec = 
     .map(([name, analysis]) => ({ name, ...analysis }));
 
   // 2. Agrupar por room_type (solo los que están en el arco narrativo)
-  /** @type {Record<string, Array<{ name: string, usable_start_fraction: number }>>} */
+  /** @type {Record<string, Array<{ name: string, usable_start_fraction: number, fps: number }>>} */
   const groups = {};
   for (const room of NARRATIVE_ARC) groups[room] = [];
   for (const clip of validClips) {
     if (groups[clip.room_type]) {
-      groups[clip.room_type].push({ name: clip.name, usable_start_fraction: clip.usable_start_fraction ?? 0 });
+      groups[clip.room_type].push({ name: clip.name, usable_start_fraction: clip.usable_start_fraction ?? 0, fps: clip.fps ?? 30 });
     }
   }
 
@@ -116,6 +117,7 @@ export function generateTimeline(metadataMap, beatsArray, maxVideoDurationSec = 
       clipName: clipFound.name,
       durationSec: actualDuration,
       startFraction: clipFound.usable_start_fraction ?? 0,
+      fps: clipFound.fps ?? 30,
     });
 
     accumulated += actualDuration;

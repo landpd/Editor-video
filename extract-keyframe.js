@@ -8,14 +8,15 @@ registerMediabunnyServer();
 
 /**
  * Extrae tres frames JPEG (20 %, 50 % y 80 % del video) como strings Base64,
- * redimensionados a 720 px de ancho máximo con calidad 80.
+ * redimensionados a 720 px de ancho máximo con calidad 80, junto con el
+ * framerate promedio del video.
  *
  * Cada frame se libera inmediatamente después de copiar sus pixeles,
  * minimizando el pico de memoria.
  *
  * @param {string} videoPath  Ruta absoluta o relativa a un archivo MP4.
- * @returns {Promise<string[] | null>}
- *   Array de tres strings Base64 JPEG, o `null` si algo falla
+ * @returns {Promise<{ base64Frames: string[], fps: number } | null>}
+ *   Objeto con 3 frames Base64 y FPS, o `null` si algo falla
  *   (archivo inexistente, corrupto, sin pista de video, codec no soportado).
  */
 export async function extractKeyframe(videoPath) {
@@ -33,6 +34,9 @@ export async function extractKeyframe(videoPath) {
 
     const videoTrack = await input.getPrimaryVideoTrack();
     if (!videoTrack) return null;
+
+    const stats = await videoTrack.computePacketStats(100);
+    const fps = Math.round(stats.averagePacketRate);
 
     const duration = await input.computeDuration();
     const timestamps = [duration * 0.20, duration * 0.50, duration * 0.80];
@@ -69,7 +73,7 @@ export async function extractKeyframe(videoPath) {
       }
     }
 
-    return results.length === 3 ? results : null;
+    return results.length === 3 ? { base64Frames: results, fps } : null;
     
   } catch (/** @type {any} */ error) {
     // Evitamos el "Silent Failure"
