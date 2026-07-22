@@ -16,6 +16,15 @@ registerMediabunnyServer();
  *   Objeto con beats (timestamps en segundos) y BPM estimado, o null si falla.
  */
 export async function getAudioBeats(audioPath, manualBpm = null) {
+  // MAGIA PRO: Si le pasas el BPM manualmente, genera los cortes matemáticamente
+  if (manualBpm && !isNaN(manualBpm)) {
+    console.log(`[Audio] Forzando BPM manual a: ${manualBpm}`);
+    const beats = [];
+    const intervalSec = 60 / manualBpm;
+    // Genera 60 segundos de beats
+    for (let i = 0; i < 60; i += intervalSec) beats.push(i);
+    return { beats, bpm: manualBpm };
+  }
   let input;
   const chunks = [];
 

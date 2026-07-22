@@ -28,6 +28,7 @@ export function renderFinalVideo(timeline, clipsFolder, audioPath, outputPath) {
     const filters = [];
     const concatInputs = [];
     const totalDuration = timeline.reduce((sum, clip) => sum + clip.durationSec, 0);
+    const fadeStart = Math.max(0, totalDuration - 1); 
     const lutPath = path.resolve('./assets/dji_dlog_m.cube');
     // FFmpeg en Windows requiere que escapemos los dos puntos (C:) y usemos slashes normales
     const escapedLutPath = lutPath.replace(/\\/g, '/').replace(/:/g, '\\:');
@@ -59,7 +60,7 @@ export function renderFinalVideo(timeline, clipsFolder, audioPath, outputPath) {
     const filterComplex = 
       filters.join(';') + ';' + 
       concatInputs.join('') + `concat=n=${timeline.length}:v=1:a=0[outv];` +
-      `[${timeline.length}:a]atrim=duration=${totalDuration},afade=t=out:st=${totalDuration - 1}:d=1[outa]`;
+      `[${timeline.length}:a]atrim=duration=${totalDuration},afade=t=out:st=${fadeStart}:d=1[outa]`;
 
     const args = [
       ...inputs,
