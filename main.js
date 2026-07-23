@@ -5,6 +5,7 @@ import { buildMetadataMap } from './generate-property-metadata.js';
 import { getAudioBeats } from './analyze-audio-beats.js';
 import { generateTimeline } from './build-timeline.js';
 import { renderFinalVideo } from './render-video.js';
+import { buildPremiereXML } from './export-premiere-xml.js';
 
 process.loadEnvFile(); 
 
@@ -45,12 +46,20 @@ async function main() {
     if (!audioData) throw new Error('No se pudieron extraer los beats del audio.');
     console.log(`✅ Beats detectados. BPM estimado: ${audioData.bpm}`);
 
-    // 3. CEREBRO: Armar la línea de tiempo
+   // 3. CEREBRO: Armar la línea de tiempo
     console.log('\n🧠 Construyendo receta de edición (Timeline)...');
     const timeline = generateTimeline(metadataMap, audioData.beats, 30);
     if (timeline.length === 0) throw new Error('No se pudo generar la línea de tiempo. Verifica los videos.');
+    
+    // --> EL PUENTE A REMOTION: Guardar la receta <--
+    const recipePath = path.join(OUTPUT_FOLDER, 'remotion-recipe.json');
+    await fs.writeFile(recipePath, JSON.stringify(timeline, null, 2), 'utf-8');
     console.log(`✅ Timeline generado con ${timeline.length} cortes.`);
 
+    const xmlPath = path.join(OUTPUT_FOLDER, 'rough_cut.xml');
+    await buildPremiereXML(timeline, PROPERTY_FOLDER, AUDIO_FILE, xmlPath);
+    console.log(`✅ Archivo XML para Premiere generado en ${xmlPath}`);
+    
     // 4. RENDER: FFmpeg al rescate
     console.log('\n⚙️ Renderizando video final (Esto puede tardar unos segundos)...');
     await renderFinalVideo(timeline, PROPERTY_FOLDER, AUDIO_FILE, OUTPUT_FILE);
