@@ -3,7 +3,7 @@
 <xmeml version="4">
   <sequence>
     <name>Propiedad Timeline</name>
-    <duration>899</duration>
+    <duration>907</duration>
     <rate>
     <timebase>30</timebase>
     <ntsc>TRUE</ntsc>
@@ -13,27 +13,27 @@
         <track>
           <!-- MASTER VIDEO TRACK -->
                     <clipitem id="clip-0">
-            <name>DJI_20260717115210_0461_D.MP4</name>
-            <duration>33</duration>
+            <name>DJI_20260714113952_0420_D.MP4</name>
+            <duration>39</duration>
             <rate>
               <timebase>30</timebase>
               <ntsc>TRUE</ntsc>
             </rate>
             <in>0</in>
-            <out>33</out>
+            <out>39</out>
             <start>0</start>
-            <end>33</end>
+            <end>39</end>
             <file id="file-0">
-              <name>DJI_20260717115210_0461_D.MP4</name>
-              <pathurl>file:////Users/luislopez/Proyectos/Editor-video/videos/DJI_20260717115210_0461_D.MP4</pathurl>
+              <name>DJI_20260714113952_0420_D.MP4</name>
+              <pathurl>file:///C:/Users/LUIS/Editor-video/videos/DJI_20260714113952_0420_D.MP4</pathurl>
               <rate>
                 <timebase>30</timebase>
                 <ntsc>TRUE</ntsc>
               </rate>
-              <duration>33</duration>
+              <duration>39</duration>
               <media>
                 <video>
-                  <duration>33</duration>
+                  <duration>39</duration>
                   <samplecharacteristics>
                     <width>1080</width>
                     <height>1920</height>
@@ -48,27 +48,27 @@
             </sourcetrack>
           </clipitem>
                     <clipitem id="clip-1">
-            <name>DJI_20260717115253_0464_D.MP4</name>
-            <duration>33</duration>
+            <name>DJI_20260714112318_0387_D.MP4</name>
+            <duration>39</duration>
             <rate>
               <timebase>30</timebase>
               <ntsc>TRUE</ntsc>
             </rate>
             <in>0</in>
-            <out>33</out>
-            <start>33</start>
-            <end>66</end>
+            <out>39</out>
+            <start>39</start>
+            <end>78</end>
             <file id="file-1">
-              <name>DJI_20260717115253_0464_D.MP4</name>
-              <pathurl>file:////Users/luislopez/Proyectos/Editor-video/videos/DJI_20260717115253_0464_D.MP4</pathurl>
+              <name>DJI_20260714112318_0387_D.MP4</name>
+              <pathurl>file:///C:/Users/LUIS/Editor-video/videos/DJI_20260714112318_0387_D.MP4</pathurl>
               <rate>
                 <timebase>30</timebase>
                 <ntsc>TRUE</ntsc>
               </rate>
-              <duration>33</duration>
+              <duration>39</duration>
               <media>
                 <video>
-                  <duration>33</duration>
+                  <duration>39</duration>
                   <samplecharacteristics>
                     <width>1080</width>
                     <height>1920</height>
@@ -83,27 +83,27 @@
             </sourcetrack>
           </clipitem>
                     <clipitem id="clip-2">
-            <name>DJI_20260717115439_0469_D.MP4</name>
-            <duration>33</duration>
+            <name>DJI_20260714113929_0419_D.MP4</name>
+            <duration>39</duration>
             <rate>
               <timebase>30</timebase>
               <ntsc>TRUE</ntsc>
             </rate>
             <in>0</in>
-            <out>33</out>
-            <start>66</start>
-            <end>99</end>
+            <out>39</out>
+            <start>78</start>
+            <end>117</end>
             <file id="file-2">
-              <name>DJI_20260717115439_0469_D.MP4</name>
-              <pathurl>file:////Users/luislopez/Proyectos/Editor-video/videos/DJI_20260717115439_0469_D.MP4</pathurl>
+              <name>DJI_20260714113929_0419_D.MP4</name>
+              <pathurl>file:///C:/Users/LUIS/Editor-video/videos/DJI_20260714113929_0419_D.MP4</pathurl>
               <rate>
                 <timebase>30</timebase>
                 <ntsc>TRUE</ntsc>
               </rate>
-              <duration>33</duration>
+              <duration>39</duration>
               <media>
                 <video>
-                  <duration>33</duration>
+                  <duration>39</duration>
                   <samplecharacteristics>
                     <width>1080</width>
                     <height>1920</height>
@@ -118,27 +118,27 @@
             </sourcetrack>
           </clipitem>
                     <clipitem id="clip-3">
-            <name>DJI_20260717115626_0474_D.MP4</name>
-            <duration>33</duration>
+            <name>DJI_20260714114217_0430_D.MP4</name>
+            <duration>39</duration>
             <rate>
               <timebase>30</timebase>
               <ntsc>TRUE</ntsc>
             </rate>
             <in>0</in>
-            <out>33</out>
-            <start>99</start>
-            <end>132</end>
+            <out>39</out>
+            <start>117</start>
+            <end>156</end>
             <file id="file-3">
-              <name>DJI_20260717115626_0474_D.MP4</name>
-              <pathurl>file:////Users/luislopez/Proyectos/Editor-video/videos/DJI_20260717115626_0474_D.MP4</pathurl>
+              <name>DJI_20260714114217_0430_D.MP4</name>
+              <pathurl>file:///C:/Users/LUIS/Editor-video/videos/DJI_20260714114217_0430_D.MP4</pathurl>
               <rate>
                 <timebase>30</timebase>
                 <ntsc>TRUE</ntsc>
               </rate>
-              <duration>33</duration>
+              <duration>39</duration>
               <media>
                 <video>
-                  <duration>33</duration>
+                  <duration>39</duration>
                   <samplecharacteristics>
                     <width>1080</width>
                     <height>1920</height>
@@ -153,27 +153,27 @@
             </sourcetrack>
           </clipitem>
                     <clipitem id="clip-4">
-            <name>DJI_20260717115804_0476_D.MP4</name>
-            <duration>33</duration>
+            <name>DJI_20260714112928_0399_D.MP4</name>
+            <duration>39</duration>
             <rate>
               <timebase>30</timebase>
               <ntsc>TRUE</ntsc>
             </rate>
             <in>0</in>
-            <out>33</out>
-            <start>132</start>
-            <end>165</end>
+            <out>39</out>
+            <start>156</start>
+            <end>195</end>
             <file id="file-4">
-              <name>DJI_20260717115804_0476_D.MP4</name>
-              <pathurl>file:////Users/luislopez/Proyectos/Editor-video/videos/DJI_20260717115804_0476_D.MP4</pathurl>
+              <name>DJI_20260714112928_0399_D.MP4</name>
+              <pathurl>file:///C:/Users/LUIS/Editor-video/videos/DJI_20260714112928_0399_D.MP4</pathurl>
               <rate>
                 <timebase>30</timebase>
                 <ntsc>TRUE</ntsc>
               </rate>
-              <duration>33</duration>
+              <duration>39</duration>
               <media>
                 <video>
-                  <duration>33</duration>
+                  <duration>39</duration>
                   <samplecharacteristics>
                     <width>1080</width>
                     <height>1920</height>
@@ -188,27 +188,27 @@
             </sourcetrack>
           </clipitem>
                     <clipitem id="clip-5">
-            <name>DJI_20260717115427_0468_D.MP4</name>
-            <duration>33</duration>
+            <name>DJI_20260714112404_0390_D.MP4</name>
+            <duration>39</duration>
             <rate>
               <timebase>30</timebase>
               <ntsc>TRUE</ntsc>
             </rate>
-            <in>0</in>
-            <out>33</out>
-            <start>165</start>
-            <end>198</end>
+            <in>75</in>
+            <out>114</out>
+            <start>195</start>
+            <end>234</end>
             <file id="file-5">
-              <name>DJI_20260717115427_0468_D.MP4</name>
-              <pathurl>file:////Users/luislopez/Proyectos/Editor-video/videos/DJI_20260717115427_0468_D.MP4</pathurl>
+              <name>DJI_20260714112404_0390_D.MP4</name>
+              <pathurl>file:///C:/Users/LUIS/Editor-video/videos/DJI_20260714112404_0390_D.MP4</pathurl>
               <rate>
                 <timebase>30</timebase>
                 <ntsc>TRUE</ntsc>
               </rate>
-              <duration>33</duration>
+              <duration>114</duration>
               <media>
                 <video>
-                  <duration>33</duration>
+                  <duration>114</duration>
                   <samplecharacteristics>
                     <width>1080</width>
                     <height>1920</height>
@@ -223,27 +223,27 @@
             </sourcetrack>
           </clipitem>
                     <clipitem id="clip-6">
-            <name>DJI_20260717115220_0462_D.MP4</name>
-            <duration>33</duration>
+            <name>DJI_20260714113043_0404_D.MP4</name>
+            <duration>39</duration>
             <rate>
               <timebase>30</timebase>
               <ntsc>TRUE</ntsc>
             </rate>
             <in>0</in>
-            <out>33</out>
-            <start>198</start>
-            <end>231</end>
+            <out>39</out>
+            <start>234</start>
+            <end>273</end>
             <file id="file-6">
-              <name>DJI_20260717115220_0462_D.MP4</name>
-              <pathurl>file:////Users/luislopez/Proyectos/Editor-video/videos/DJI_20260717115220_0462_D.MP4</pathurl>
+              <name>DJI_20260714113043_0404_D.MP4</name>
+              <pathurl>file:///C:/Users/LUIS/Editor-video/videos/DJI_20260714113043_0404_D.MP4</pathurl>
               <rate>
                 <timebase>30</timebase>
                 <ntsc>TRUE</ntsc>
               </rate>
-              <duration>33</duration>
+              <duration>39</duration>
               <media>
                 <video>
-                  <duration>33</duration>
+                  <duration>39</duration>
                   <samplecharacteristics>
                     <width>1080</width>
                     <height>1920</height>
@@ -258,27 +258,27 @@
             </sourcetrack>
           </clipitem>
                     <clipitem id="clip-7">
-            <name>DJI_20260717115313_0466_D.MP4</name>
-            <duration>33</duration>
+            <name>DJI_20260714112412_0391_D.MP4</name>
+            <duration>39</duration>
             <rate>
               <timebase>30</timebase>
               <ntsc>TRUE</ntsc>
             </rate>
             <in>0</in>
-            <out>33</out>
-            <start>231</start>
-            <end>264</end>
+            <out>39</out>
+            <start>273</start>
+            <end>312</end>
             <file id="file-7">
-              <name>DJI_20260717115313_0466_D.MP4</name>
-              <pathurl>file:////Users/luislopez/Proyectos/Editor-video/videos/DJI_20260717115313_0466_D.MP4</pathurl>
+              <name>DJI_20260714112412_0391_D.MP4</name>
+              <pathurl>file:///C:/Users/LUIS/Editor-video/videos/DJI_20260714112412_0391_D.MP4</pathurl>
               <rate>
                 <timebase>30</timebase>
                 <ntsc>TRUE</ntsc>
               </rate>
-              <duration>33</duration>
+              <duration>39</duration>
               <media>
                 <video>
-                  <duration>33</duration>
+                  <duration>39</duration>
                   <samplecharacteristics>
                     <width>1080</width>
                     <height>1920</height>
@@ -293,27 +293,27 @@
             </sourcetrack>
           </clipitem>
                     <clipitem id="clip-8">
-            <name>DJI_20260717122346_0494_D.MP4</name>
-            <duration>33</duration>
+            <name>DJI_20260714114020_0421_D.MP4</name>
+            <duration>39</duration>
             <rate>
               <timebase>30</timebase>
               <ntsc>TRUE</ntsc>
             </rate>
             <in>0</in>
-            <out>33</out>
-            <start>264</start>
-            <end>297</end>
+            <out>39</out>
+            <start>312</start>
+            <end>351</end>
             <file id="file-8">
-              <name>DJI_20260717122346_0494_D.MP4</name>
-              <pathurl>file:////Users/luislopez/Proyectos/Editor-video/videos/DJI_20260717122346_0494_D.MP4</pathurl>
+              <name>DJI_20260714114020_0421_D.MP4</name>
+              <pathurl>file:///C:/Users/LUIS/Editor-video/videos/DJI_20260714114020_0421_D.MP4</pathurl>
               <rate>
                 <timebase>30</timebase>
                 <ntsc>TRUE</ntsc>
               </rate>
-              <duration>33</duration>
+              <duration>39</duration>
               <media>
                 <video>
-                  <duration>33</duration>
+                  <duration>39</duration>
                   <samplecharacteristics>
                     <width>1080</width>
                     <height>1920</height>
@@ -328,27 +328,27 @@
             </sourcetrack>
           </clipitem>
                     <clipitem id="clip-9">
-            <name>DJI_20260717115637_0475_D.MP4</name>
-            <duration>33</duration>
+            <name>DJI_20260714112329_0388_D.MP4</name>
+            <duration>39</duration>
             <rate>
               <timebase>30</timebase>
               <ntsc>TRUE</ntsc>
             </rate>
             <in>0</in>
-            <out>33</out>
-            <start>297</start>
-            <end>330</end>
+            <out>39</out>
+            <start>351</start>
+            <end>390</end>
             <file id="file-9">
-              <name>DJI_20260717115637_0475_D.MP4</name>
-              <pathurl>file:////Users/luislopez/Proyectos/Editor-video/videos/DJI_20260717115637_0475_D.MP4</pathurl>
+              <name>DJI_20260714112329_0388_D.MP4</name>
+              <pathurl>file:///C:/Users/LUIS/Editor-video/videos/DJI_20260714112329_0388_D.MP4</pathurl>
               <rate>
                 <timebase>30</timebase>
                 <ntsc>TRUE</ntsc>
               </rate>
-              <duration>33</duration>
+              <duration>39</duration>
               <media>
                 <video>
-                  <duration>33</duration>
+                  <duration>39</duration>
                   <samplecharacteristics>
                     <width>1080</width>
                     <height>1920</height>
@@ -363,27 +363,27 @@
             </sourcetrack>
           </clipitem>
                     <clipitem id="clip-10">
-            <name>DJI_20260717115930_0480_D.MP4</name>
-            <duration>33</duration>
+            <name>DJI_20260714114555_0434_D.MP4</name>
+            <duration>39</duration>
             <rate>
               <timebase>30</timebase>
               <ntsc>TRUE</ntsc>
             </rate>
             <in>0</in>
-            <out>33</out>
-            <start>330</start>
-            <end>363</end>
+            <out>39</out>
+            <start>390</start>
+            <end>429</end>
             <file id="file-10">
-              <name>DJI_20260717115930_0480_D.MP4</name>
-              <pathurl>file:////Users/luislopez/Proyectos/Editor-video/videos/DJI_20260717115930_0480_D.MP4</pathurl>
+              <name>DJI_20260714114555_0434_D.MP4</name>
+              <pathurl>file:///C:/Users/LUIS/Editor-video/videos/DJI_20260714114555_0434_D.MP4</pathurl>
               <rate>
                 <timebase>30</timebase>
                 <ntsc>TRUE</ntsc>
               </rate>
-              <duration>33</duration>
+              <duration>39</duration>
               <media>
                 <video>
-                  <duration>33</duration>
+                  <duration>39</duration>
                   <samplecharacteristics>
                     <width>1080</width>
                     <height>1920</height>
@@ -398,27 +398,27 @@
             </sourcetrack>
           </clipitem>
                     <clipitem id="clip-11">
-            <name>DJI_20260717115842_0477_D.MP4</name>
-            <duration>33</duration>
+            <name>DJI_20260714112951_0401_D.MP4</name>
+            <duration>39</duration>
             <rate>
               <timebase>30</timebase>
               <ntsc>TRUE</ntsc>
             </rate>
             <in>0</in>
-            <out>33</out>
-            <start>363</start>
-            <end>396</end>
+            <out>39</out>
+            <start>429</start>
+            <end>468</end>
             <file id="file-11">
-              <name>DJI_20260717115842_0477_D.MP4</name>
-              <pathurl>file:////Users/luislopez/Proyectos/Editor-video/videos/DJI_20260717115842_0477_D.MP4</pathurl>
+              <name>DJI_20260714112951_0401_D.MP4</name>
+              <pathurl>file:///C:/Users/LUIS/Editor-video/videos/DJI_20260714112951_0401_D.MP4</pathurl>
               <rate>
                 <timebase>30</timebase>
                 <ntsc>TRUE</ntsc>
               </rate>
-              <duration>33</duration>
+              <duration>39</duration>
               <media>
                 <video>
-                  <duration>33</duration>
+                  <duration>39</duration>
                   <samplecharacteristics>
                     <width>1080</width>
                     <height>1920</height>
@@ -433,27 +433,27 @@
             </sourcetrack>
           </clipitem>
                     <clipitem id="clip-12">
-            <name>DJI_20260717115233_0463_D.MP4</name>
-            <duration>33</duration>
+            <name>DJI_20260714112634_0396_D.MP4</name>
+            <duration>39</duration>
             <rate>
               <timebase>30</timebase>
               <ntsc>TRUE</ntsc>
             </rate>
             <in>0</in>
-            <out>33</out>
-            <start>396</start>
-            <end>429</end>
+            <out>39</out>
+            <start>468</start>
+            <end>507</end>
             <file id="file-12">
-              <name>DJI_20260717115233_0463_D.MP4</name>
-              <pathurl>file:////Users/luislopez/Proyectos/Editor-video/videos/DJI_20260717115233_0463_D.MP4</pathurl>
+              <name>DJI_20260714112634_0396_D.MP4</name>
+              <pathurl>file:///C:/Users/LUIS/Editor-video/videos/DJI_20260714112634_0396_D.MP4</pathurl>
               <rate>
                 <timebase>30</timebase>
                 <ntsc>TRUE</ntsc>
               </rate>
-              <duration>33</duration>
+              <duration>39</duration>
               <media>
                 <video>
-                  <duration>33</duration>
+                  <duration>39</duration>
                   <samplecharacteristics>
                     <width>1080</width>
                     <height>1920</height>
@@ -468,27 +468,27 @@
             </sourcetrack>
           </clipitem>
                     <clipitem id="clip-13">
-            <name>DJI_20260717122402_0495_D.MP4</name>
-            <duration>33</duration>
+            <name>DJI_20260714113420_0413_D.MP4</name>
+            <duration>39</duration>
             <rate>
               <timebase>30</timebase>
               <ntsc>TRUE</ntsc>
             </rate>
             <in>0</in>
-            <out>33</out>
-            <start>429</start>
-            <end>462</end>
+            <out>39</out>
+            <start>507</start>
+            <end>546</end>
             <file id="file-13">
-              <name>DJI_20260717122402_0495_D.MP4</name>
-              <pathurl>file:////Users/luislopez/Proyectos/Editor-video/videos/DJI_20260717122402_0495_D.MP4</pathurl>
+              <name>DJI_20260714113420_0413_D.MP4</name>
+              <pathurl>file:///C:/Users/LUIS/Editor-video/videos/DJI_20260714113420_0413_D.MP4</pathurl>
               <rate>
                 <timebase>30</timebase>
                 <ntsc>TRUE</ntsc>
               </rate>
-              <duration>33</duration>
+              <duration>39</duration>
               <media>
                 <video>
-                  <duration>33</duration>
+                  <duration>39</duration>
                   <samplecharacteristics>
                     <width>1080</width>
                     <height>1920</height>
@@ -503,27 +503,27 @@
             </sourcetrack>
           </clipitem>
                     <clipitem id="clip-14">
-            <name>DJI_20260717115905_0478_D.MP4</name>
-            <duration>33</duration>
+            <name>DJI_20260714112444_0392_D.MP4</name>
+            <duration>39</duration>
             <rate>
               <timebase>30</timebase>
               <ntsc>TRUE</ntsc>
             </rate>
             <in>0</in>
-            <out>33</out>
-            <start>462</start>
-            <end>495</end>
+            <out>39</out>
+            <start>546</start>
+            <end>585</end>
             <file id="file-14">
-              <name>DJI_20260717115905_0478_D.MP4</name>
-              <pathurl>file:////Users/luislopez/Proyectos/Editor-video/videos/DJI_20260717115905_0478_D.MP4</pathurl>
+              <name>DJI_20260714112444_0392_D.MP4</name>
+              <pathurl>file:///C:/Users/LUIS/Editor-video/videos/DJI_20260714112444_0392_D.MP4</pathurl>
               <rate>
                 <timebase>30</timebase>
                 <ntsc>TRUE</ntsc>
               </rate>
-              <duration>33</duration>
+              <duration>39</duration>
               <media>
                 <video>
-                  <duration>33</duration>
+                  <duration>39</duration>
                   <samplecharacteristics>
                     <width>1080</width>
                     <height>1920</height>
@@ -538,27 +538,27 @@
             </sourcetrack>
           </clipitem>
                     <clipitem id="clip-15">
-            <name>DJI_20260717120018_0485_D.MP4</name>
-            <duration>33</duration>
+            <name>DJI_20260714112351_0389_D.MP4</name>
+            <duration>39</duration>
             <rate>
               <timebase>30</timebase>
               <ntsc>TRUE</ntsc>
             </rate>
             <in>0</in>
-            <out>33</out>
-            <start>495</start>
-            <end>528</end>
+            <out>39</out>
+            <start>585</start>
+            <end>624</end>
             <file id="file-15">
-              <name>DJI_20260717120018_0485_D.MP4</name>
-              <pathurl>file:////Users/luislopez/Proyectos/Editor-video/videos/DJI_20260717120018_0485_D.MP4</pathurl>
+              <name>DJI_20260714112351_0389_D.MP4</name>
+              <pathurl>file:///C:/Users/LUIS/Editor-video/videos/DJI_20260714112351_0389_D.MP4</pathurl>
               <rate>
                 <timebase>30</timebase>
                 <ntsc>TRUE</ntsc>
               </rate>
-              <duration>33</duration>
+              <duration>39</duration>
               <media>
                 <video>
-                  <duration>33</duration>
+                  <duration>39</duration>
                   <samplecharacteristics>
                     <width>1080</width>
                     <height>1920</height>
@@ -573,27 +573,27 @@
             </sourcetrack>
           </clipitem>
                     <clipitem id="clip-16">
-            <name>DJI_20260717120026_0486_D.MP4</name>
-            <duration>33</duration>
+            <name>DJI_20260714113003_0402_D.MP4</name>
+            <duration>39</duration>
             <rate>
               <timebase>30</timebase>
               <ntsc>TRUE</ntsc>
             </rate>
             <in>0</in>
-            <out>33</out>
-            <start>528</start>
-            <end>561</end>
+            <out>39</out>
+            <start>624</start>
+            <end>663</end>
             <file id="file-16">
-              <name>DJI_20260717120026_0486_D.MP4</name>
-              <pathurl>file:////Users/luislopez/Proyectos/Editor-video/videos/DJI_20260717120026_0486_D.MP4</pathurl>
+              <name>DJI_20260714113003_0402_D.MP4</name>
+              <pathurl>file:///C:/Users/LUIS/Editor-video/videos/DJI_20260714113003_0402_D.MP4</pathurl>
               <rate>
                 <timebase>30</timebase>
                 <ntsc>TRUE</ntsc>
               </rate>
-              <duration>33</duration>
+              <duration>39</duration>
               <media>
                 <video>
-                  <duration>33</duration>
+                  <duration>39</duration>
                   <samplecharacteristics>
                     <width>1080</width>
                     <height>1920</height>
@@ -608,27 +608,27 @@
             </sourcetrack>
           </clipitem>
                     <clipitem id="clip-17">
-            <name>DJI_20260717115301_0465_D.MP4</name>
-            <duration>33</duration>
+            <name>DJI_20260714113109_0405_D.MP4</name>
+            <duration>39</duration>
             <rate>
               <timebase>30</timebase>
               <ntsc>TRUE</ntsc>
             </rate>
             <in>0</in>
-            <out>33</out>
-            <start>561</start>
-            <end>594</end>
+            <out>39</out>
+            <start>663</start>
+            <end>702</end>
             <file id="file-17">
-              <name>DJI_20260717115301_0465_D.MP4</name>
-              <pathurl>file:////Users/luislopez/Proyectos/Editor-video/videos/DJI_20260717115301_0465_D.MP4</pathurl>
+              <name>DJI_20260714113109_0405_D.MP4</name>
+              <pathurl>file:///C:/Users/LUIS/Editor-video/videos/DJI_20260714113109_0405_D.MP4</pathurl>
               <rate>
                 <timebase>30</timebase>
                 <ntsc>TRUE</ntsc>
               </rate>
-              <duration>33</duration>
+              <duration>39</duration>
               <media>
                 <video>
-                  <duration>33</duration>
+                  <duration>39</duration>
                   <samplecharacteristics>
                     <width>1080</width>
                     <height>1920</height>
@@ -643,27 +643,27 @@
             </sourcetrack>
           </clipitem>
                     <clipitem id="clip-18">
-            <name>DJI_20260717122422_0496_D.MP4</name>
-            <duration>33</duration>
+            <name>DJI_20260714113447_0414_D.MP4</name>
+            <duration>39</duration>
             <rate>
               <timebase>30</timebase>
               <ntsc>TRUE</ntsc>
             </rate>
-            <in>0</in>
-            <out>33</out>
-            <start>594</start>
-            <end>627</end>
+            <in>75</in>
+            <out>114</out>
+            <start>702</start>
+            <end>741</end>
             <file id="file-18">
-              <name>DJI_20260717122422_0496_D.MP4</name>
-              <pathurl>file:////Users/luislopez/Proyectos/Editor-video/videos/DJI_20260717122422_0496_D.MP4</pathurl>
+              <name>DJI_20260714113447_0414_D.MP4</name>
+              <pathurl>file:///C:/Users/LUIS/Editor-video/videos/DJI_20260714113447_0414_D.MP4</pathurl>
               <rate>
                 <timebase>30</timebase>
                 <ntsc>TRUE</ntsc>
               </rate>
-              <duration>33</duration>
+              <duration>114</duration>
               <media>
                 <video>
-                  <duration>33</duration>
+                  <duration>114</duration>
                   <samplecharacteristics>
                     <width>1080</width>
                     <height>1920</height>
@@ -678,27 +678,27 @@
             </sourcetrack>
           </clipitem>
                     <clipitem id="clip-19">
-            <name>DJI_20260717115918_0479_D.MP4</name>
-            <duration>33</duration>
+            <name>DJI_20260714112527_0394_D.MP4</name>
+            <duration>39</duration>
             <rate>
               <timebase>30</timebase>
               <ntsc>TRUE</ntsc>
             </rate>
             <in>0</in>
-            <out>33</out>
-            <start>627</start>
-            <end>660</end>
+            <out>39</out>
+            <start>741</start>
+            <end>780</end>
             <file id="file-19">
-              <name>DJI_20260717115918_0479_D.MP4</name>
-              <pathurl>file:////Users/luislopez/Proyectos/Editor-video/videos/DJI_20260717115918_0479_D.MP4</pathurl>
+              <name>DJI_20260714112527_0394_D.MP4</name>
+              <pathurl>file:///C:/Users/LUIS/Editor-video/videos/DJI_20260714112527_0394_D.MP4</pathurl>
               <rate>
                 <timebase>30</timebase>
                 <ntsc>TRUE</ntsc>
               </rate>
-              <duration>33</duration>
+              <duration>39</duration>
               <media>
                 <video>
-                  <duration>33</duration>
+                  <duration>39</duration>
                   <samplecharacteristics>
                     <width>1080</width>
                     <height>1920</height>
@@ -713,27 +713,27 @@
             </sourcetrack>
           </clipitem>
                     <clipitem id="clip-20">
-            <name>DJI_20260717120145_0489_D.MP4</name>
-            <duration>33</duration>
+            <name>DJI_20260714112506_0393_D.MP4</name>
+            <duration>39</duration>
             <rate>
               <timebase>30</timebase>
               <ntsc>TRUE</ntsc>
             </rate>
             <in>0</in>
-            <out>33</out>
-            <start>660</start>
-            <end>693</end>
+            <out>39</out>
+            <start>780</start>
+            <end>819</end>
             <file id="file-20">
-              <name>DJI_20260717120145_0489_D.MP4</name>
-              <pathurl>file:////Users/luislopez/Proyectos/Editor-video/videos/DJI_20260717120145_0489_D.MP4</pathurl>
+              <name>DJI_20260714112506_0393_D.MP4</name>
+              <pathurl>file:///C:/Users/LUIS/Editor-video/videos/DJI_20260714112506_0393_D.MP4</pathurl>
               <rate>
                 <timebase>30</timebase>
                 <ntsc>TRUE</ntsc>
               </rate>
-              <duration>33</duration>
+              <duration>39</duration>
               <media>
                 <video>
-                  <duration>33</duration>
+                  <duration>39</duration>
                   <samplecharacteristics>
                     <width>1080</width>
                     <height>1920</height>
@@ -748,27 +748,27 @@
             </sourcetrack>
           </clipitem>
                     <clipitem id="clip-21">
-            <name>DJI_20260717115347_0467_D.MP4</name>
-            <duration>33</duration>
+            <name>DJI_20260714113020_0403_D.MP4</name>
+            <duration>39</duration>
             <rate>
               <timebase>30</timebase>
               <ntsc>TRUE</ntsc>
             </rate>
             <in>0</in>
-            <out>33</out>
-            <start>693</start>
-            <end>726</end>
+            <out>39</out>
+            <start>819</start>
+            <end>858</end>
             <file id="file-21">
-              <name>DJI_20260717115347_0467_D.MP4</name>
-              <pathurl>file:////Users/luislopez/Proyectos/Editor-video/videos/DJI_20260717115347_0467_D.MP4</pathurl>
+              <name>DJI_20260714113020_0403_D.MP4</name>
+              <pathurl>file:///C:/Users/LUIS/Editor-video/videos/DJI_20260714113020_0403_D.MP4</pathurl>
               <rate>
                 <timebase>30</timebase>
                 <ntsc>TRUE</ntsc>
               </rate>
-              <duration>33</duration>
+              <duration>39</duration>
               <media>
                 <video>
-                  <duration>33</duration>
+                  <duration>39</duration>
                   <samplecharacteristics>
                     <width>1080</width>
                     <height>1920</height>
@@ -783,27 +783,27 @@
             </sourcetrack>
           </clipitem>
                     <clipitem id="clip-22">
-            <name>DJI_20260717122532_0497_D.MP4</name>
-            <duration>33</duration>
+            <name>DJI_20260714113121_0406_D.MP4</name>
+            <duration>39</duration>
             <rate>
               <timebase>30</timebase>
               <ntsc>TRUE</ntsc>
             </rate>
             <in>0</in>
-            <out>33</out>
-            <start>726</start>
-            <end>759</end>
+            <out>39</out>
+            <start>858</start>
+            <end>897</end>
             <file id="file-22">
-              <name>DJI_20260717122532_0497_D.MP4</name>
-              <pathurl>file:////Users/luislopez/Proyectos/Editor-video/videos/DJI_20260717122532_0497_D.MP4</pathurl>
+              <name>DJI_20260714113121_0406_D.MP4</name>
+              <pathurl>file:///C:/Users/LUIS/Editor-video/videos/DJI_20260714113121_0406_D.MP4</pathurl>
               <rate>
                 <timebase>30</timebase>
                 <ntsc>TRUE</ntsc>
               </rate>
-              <duration>33</duration>
+              <duration>39</duration>
               <media>
                 <video>
-                  <duration>33</duration>
+                  <duration>39</duration>
                   <samplecharacteristics>
                     <width>1080</width>
                     <height>1920</height>
@@ -818,167 +818,27 @@
             </sourcetrack>
           </clipitem>
                     <clipitem id="clip-23">
-            <name>DJI_20260717115940_0481_D.MP4</name>
-            <duration>33</duration>
+            <name>DJI_20260714113456_0415_D.MP4</name>
+            <duration>10</duration>
             <rate>
               <timebase>30</timebase>
               <ntsc>TRUE</ntsc>
             </rate>
             <in>0</in>
-            <out>33</out>
-            <start>759</start>
-            <end>792</end>
+            <out>10</out>
+            <start>897</start>
+            <end>907</end>
             <file id="file-23">
-              <name>DJI_20260717115940_0481_D.MP4</name>
-              <pathurl>file:////Users/luislopez/Proyectos/Editor-video/videos/DJI_20260717115940_0481_D.MP4</pathurl>
+              <name>DJI_20260714113456_0415_D.MP4</name>
+              <pathurl>file:///C:/Users/LUIS/Editor-video/videos/DJI_20260714113456_0415_D.MP4</pathurl>
               <rate>
                 <timebase>30</timebase>
                 <ntsc>TRUE</ntsc>
               </rate>
-              <duration>33</duration>
+              <duration>10</duration>
               <media>
                 <video>
-                  <duration>33</duration>
-                  <samplecharacteristics>
-                    <width>1080</width>
-                    <height>1920</height>
-                    <pixelaspectratio>square</pixelaspectratio>
-                    <fielddominance>none</fielddominance>
-                  </samplecharacteristics>
-                </video>
-              </media>
-            </file>
-            <sourcetrack>
-              <mediatype>video</mediatype>
-            </sourcetrack>
-          </clipitem>
-                    <clipitem id="clip-24">
-            <name>DJI_20260717115502_0470_D.MP4</name>
-            <duration>33</duration>
-            <rate>
-              <timebase>30</timebase>
-              <ntsc>TRUE</ntsc>
-            </rate>
-            <in>0</in>
-            <out>33</out>
-            <start>792</start>
-            <end>825</end>
-            <file id="file-24">
-              <name>DJI_20260717115502_0470_D.MP4</name>
-              <pathurl>file:////Users/luislopez/Proyectos/Editor-video/videos/DJI_20260717115502_0470_D.MP4</pathurl>
-              <rate>
-                <timebase>30</timebase>
-                <ntsc>TRUE</ntsc>
-              </rate>
-              <duration>33</duration>
-              <media>
-                <video>
-                  <duration>33</duration>
-                  <samplecharacteristics>
-                    <width>1080</width>
-                    <height>1920</height>
-                    <pixelaspectratio>square</pixelaspectratio>
-                    <fielddominance>none</fielddominance>
-                  </samplecharacteristics>
-                </video>
-              </media>
-            </file>
-            <sourcetrack>
-              <mediatype>video</mediatype>
-            </sourcetrack>
-          </clipitem>
-                    <clipitem id="clip-25">
-            <name>DJI_20260717122545_0498_D.MP4</name>
-            <duration>33</duration>
-            <rate>
-              <timebase>30</timebase>
-              <ntsc>TRUE</ntsc>
-            </rate>
-            <in>0</in>
-            <out>33</out>
-            <start>825</start>
-            <end>858</end>
-            <file id="file-25">
-              <name>DJI_20260717122545_0498_D.MP4</name>
-              <pathurl>file:////Users/luislopez/Proyectos/Editor-video/videos/DJI_20260717122545_0498_D.MP4</pathurl>
-              <rate>
-                <timebase>30</timebase>
-                <ntsc>TRUE</ntsc>
-              </rate>
-              <duration>33</duration>
-              <media>
-                <video>
-                  <duration>33</duration>
-                  <samplecharacteristics>
-                    <width>1080</width>
-                    <height>1920</height>
-                    <pixelaspectratio>square</pixelaspectratio>
-                    <fielddominance>none</fielddominance>
-                  </samplecharacteristics>
-                </video>
-              </media>
-            </file>
-            <sourcetrack>
-              <mediatype>video</mediatype>
-            </sourcetrack>
-          </clipitem>
-                    <clipitem id="clip-26">
-            <name>DJI_20260717115948_0482_D.MP4</name>
-            <duration>33</duration>
-            <rate>
-              <timebase>30</timebase>
-              <ntsc>TRUE</ntsc>
-            </rate>
-            <in>0</in>
-            <out>33</out>
-            <start>858</start>
-            <end>891</end>
-            <file id="file-26">
-              <name>DJI_20260717115948_0482_D.MP4</name>
-              <pathurl>file:////Users/luislopez/Proyectos/Editor-video/videos/DJI_20260717115948_0482_D.MP4</pathurl>
-              <rate>
-                <timebase>30</timebase>
-                <ntsc>TRUE</ntsc>
-              </rate>
-              <duration>33</duration>
-              <media>
-                <video>
-                  <duration>33</duration>
-                  <samplecharacteristics>
-                    <width>1080</width>
-                    <height>1920</height>
-                    <pixelaspectratio>square</pixelaspectratio>
-                    <fielddominance>none</fielddominance>
-                  </samplecharacteristics>
-                </video>
-              </media>
-            </file>
-            <sourcetrack>
-              <mediatype>video</mediatype>
-            </sourcetrack>
-          </clipitem>
-                    <clipitem id="clip-27">
-            <name>DJI_20260717115513_0471_D.MP4</name>
-            <duration>8</duration>
-            <rate>
-              <timebase>30</timebase>
-              <ntsc>TRUE</ntsc>
-            </rate>
-            <in>0</in>
-            <out>8</out>
-            <start>891</start>
-            <end>899</end>
-            <file id="file-27">
-              <name>DJI_20260717115513_0471_D.MP4</name>
-              <pathurl>file:////Users/luislopez/Proyectos/Editor-video/videos/DJI_20260717115513_0471_D.MP4</pathurl>
-              <rate>
-                <timebase>30</timebase>
-                <ntsc>TRUE</ntsc>
-              </rate>
-              <duration>8</duration>
-              <media>
-                <video>
-                  <duration>8</duration>
+                  <duration>10</duration>
                   <samplecharacteristics>
                     <width>1080</width>
                     <height>1920</height>
@@ -999,26 +859,26 @@
           <!-- MASTER AUDIO TRACK -->
           <clipitem id="audio-main">
             <name>pista_30s.mp3</name>
-            <duration>899</duration>
+            <duration>907</duration>
             <rate>
               <timebase>30</timebase>
               <ntsc>TRUE</ntsc>
             </rate>
             <in>0</in>
-            <out>899</out>
+            <out>907</out>
             <start>0</start>
-            <end>899</end>
+            <end>907</end>
             <file id="audio-file">
               <name>pista_30s.mp3</name>
-              <pathurl>file:////Users/luislopez/Proyectos/Editor-video/musica/pista_30s.mp3</pathurl>
+              <pathurl>file:///C:/Users/LUIS/Editor-video/musica/pista_30s.mp3</pathurl>
               <rate>
                 <timebase>30</timebase>
                 <ntsc>TRUE</ntsc>
               </rate>
-              <duration>899</duration>
+              <duration>907</duration>
               <media>
                 <audio>
-                  <duration>899</duration>
+                  <duration>907</duration>
                   <samplecharacteristics>
                     <depth>16</depth>
                     <samplerate>44100</samplerate>

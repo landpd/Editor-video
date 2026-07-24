@@ -5,3 +5,7 @@ node_modules/
 /output/*.mp4
 .DS_Store
 metadata.json
+/output/*.*
+musica/pista_30s.mp3
+output/remotion-recipe.json
+output/rough_cut.xml
