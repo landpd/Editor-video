@@ -23,8 +23,8 @@ const OUTPUT_FILE = join(OUTPUT_DIR, 'selected-photos.json');
 const EXTENSIONS = new Set(['.jpg', '.jpeg', '.png']);
 
 /**
- * Redimensiona una imagen a un máximo de 720px (manteniendo proporción)
- * y la devuelve como string Base64 en JPEG calidad 80.
+ * Redimensiona una imagen a un máximo de 512px (manteniendo proporción)
+ * y la devuelve como string Base64 en JPEG calidad 75.
  *
  * @param   {string} filePath
  * @returns {Promise<string>}
@@ -32,8 +32,8 @@ const EXTENSIONS = new Set(['.jpg', '.jpeg', '.png']);
 async function imageToBase64(filePath) {
   const buffer = await readFile(filePath);
   const resized = await sharp(buffer)
-    .resize(720, 720, { fit: 'inside', withoutEnlargement: true })
-    .jpeg({ quality: 80 })
+    .resize(512, 512, { fit: 'inside', withoutEnlargement: true }) // <-- Cambia a 512
+    .jpeg({ quality: 75 }) // <-- Baja la calidad a 75
     .toBuffer();
   return resized.toString('base64');
 }

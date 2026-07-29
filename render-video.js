@@ -36,7 +36,7 @@ export function renderFinalVideo(timeline, clipsFolder, audioPath, outputPath) {
     for (let i = 0; i < timeline.length; i++) {
       const clip = timeline[i];
       const clipPath = path.resolve(clipsFolder, clip.clipName);
-      const skipSeconds = clip.startFraction > 0 ? 2.5 : 0;
+      const skipSeconds = clip.startFraction > 0 ? 1.0 : 0;
       const speedFactor = clip.fps > 50 ? '2.0' : '1.0';
                   
       inputs.push('-i', clipPath);

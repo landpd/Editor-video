@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "krea-ai": {
+      "type": "http",
+      "url": "https://api.krea.ai/mcp",
+      "headers": {
+        "Authorization": "Bearer d8bfb7ca-f677-4e52-a3d8-8ee493eb3b86:XB_wxoCsPYF3ESgXyTBOu87PaJrqAflG"
+      }
+    }
+  }
+}

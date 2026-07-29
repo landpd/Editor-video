@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "skills": {
+    "krea-animation": {
+      "source": "krea-ai/skills",
+      "sourceType": "github",
+      "skillPath": "krea-animation/SKILL.md",
+      "computedHash": "e620c216c76e19279d77a6d63e99bed14c4ca659f22270fcc6d4165c4ebd2e54"
+    },
+    "krea-generate": {
+      "source": "krea-ai/skills",
+      "sourceType": "github",
+      "skillPath": "krea-generate/SKILL.md",
+      "computedHash": "c6cdce40aaf74aca48ceeeb37921b00ee7f531a1bf5d28fcca2883efefd80602"
+    },
+    "krea-marketing": {
+      "source": "krea-ai/skills",
+      "sourceType": "github",
+      "skillPath": "krea-marketing/SKILL.md",
+      "computedHash": "dd243c761ee45979199694c89d09d63897b3f7579a8d955db75b846accf87037"
+    }
+  }
+}

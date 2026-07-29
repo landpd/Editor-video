@@ -3,6 +3,7 @@
     "@mediabunny/server": "^1.51.0",
     "mediabunny": "^1.51.0",
     "music-tempo": "^1.0.3",
+    "package.json": "^2.0.1",
     "sharp": "^0.35.3"
   },
   "name": "editor-video",
