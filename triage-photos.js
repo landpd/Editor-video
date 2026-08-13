@@ -79,14 +79,27 @@ export async function triagePhotos(openRouterApiKey) {
           'Tienes dos tareas:\n' +
           '1. Evaluar todas las imágenes proporcionadas.\n' +
           '2. Seleccionar EXACTAMENTE las 6 mejores fotografías para armar un video.\n\n' +
+          'CATEGORÍAS (room_type) — usa EXCLUSIVAMENTE estos valores:\n' +
+          '  - "facade": Fachada exterior de la propiedad.\n' +
+          '  - "exterior_social": Jardines, terrazas, patios, alberca, balcones.\n' +
+          '  - "interior_social": Sala, comedor, antecomedor, recibidor, sala de TV / family room.\n' +
+          '  - "bedroom": Recámaras (cualquiera).\n' +
+          '  - "bathroom": Baño principal de lujo (solo si tiene diseño excepcional).\n' +
+          '  - "hallway": Pasillos de gran perspectiva / vestidores o clósets de gran diseño.\n\n' +
           'REGLAS DE SELECCIÓN:\n' +
-          'BANEO: Cero planos, cero renders, cero vistas de mapas, cero baños pequeños, pasillos vacíos o fotos borrosas.\n' +
-          'VARIEDAD: Las 6 fotos DEBEN SER DE ESPACIOS DIFERENTES (ej. no dos de cocina).\n' +
-          'JERARQUÍA: Busca obligatoriamente: Fachada Exterior, Sala, Cocina, Recámara Principal. ' +
-          'Rellena las otras 2 con: Amenidades (Gimnasio/Alberca), Balcón/Terraza, o Baño principal lujoso.\n\n' +
+          '  - BANEO: Cero planos arquitectónicos, renders 3D, vistas de mapas, fotos borrosas o mal expuestas.\n' +
+          '  - hallway: Selecciona UNICAMENTE si la foto tiene una composición espectacular ' +
+          '(perspectiva de fuga, línea de horizonte potente, puntuación 8 o 9). ' +
+          'Sirve como transición de movimiento en el video. Sino, ignóralo.\n' +
+          '  - Variedad Inteligente: No selecciones el mismo espacio físico con ángulos casi idénticos. ' +
+          'PERO se permite elegir múltiples ambientes dentro de interior_social (ej. sala + comedor) ' +
+          'si ambos tienen puntuaciones altas (8-10), en lugar de forzar un bathroom o hallway de baja calidad.\n' +
+          '  - Prioridad de Exteriores: Valora altamente facade y exterior_social (jardín, terrazas, balcones).\n' +
+          '  - JERARQUÍA BASE: Fachada, un exterior_social, y al menos 2 interior_social variados. ' +
+          'Completa con bedroom de alta calidad o bathroom de lujo.\n\n' +
           'FORMATO DE SALIDA ESTRICTO JSON (sin markdown):\n' +
           '{\n' +
-          '  "analisis": [ { "archivo": "nombre.jpg", "ambiente": "Cocina", "puntuacion": 9, "seleccionada": true o false } ],\n' +
+          '  "analisis": [ { "archivo": "nombre.jpg", "room_type": "facade", "puntuacion": 9, "seleccionada": true o false } ],\n' +
           '  "seleccion_final": ["foto1.jpg", "foto2.jpg", "foto3.jpg", "foto4.jpg", "foto5.jpg", "foto6.jpg"]\n' +
           '}',
       },
@@ -119,8 +132,11 @@ export async function triagePhotos(openRouterApiKey) {
           {
             role: 'system',
             content:
-              'Eres un curador fotográfico profesional para bienes raíces de lujo. ' +
-              'Responde ÚNICAMENTE con el JSON especificado por el usuario, sin markdown ni texto adicional.',
+              'Eres un curador fotográfico para bienes raíces de lujo. ' +
+              'Evalúa calidad cinematográfica, variedad de ambientes y prioriza ' +
+              'exteriores e interior_social de alta puntuación. ' +
+              'Usa SOLO los room_type: facade, exterior_social, interior_social, bedroom, bathroom, hallway. ' +
+              'Responde ÚNICAMENTE con el JSON exacto que pide el usuario, sin markdown ni texto adicional.',
           },
           { role: 'user', content },
         ],

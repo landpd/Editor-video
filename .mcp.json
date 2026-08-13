@@ -6,6 +6,10 @@
       "headers": {
         "Authorization": "Bearer d8bfb7ca-f677-4e52-a3d8-8ee493eb3b86:XB_wxoCsPYF3ESgXyTBOu87PaJrqAflG"
       }
+    },
+    "artlist": {
+      "type": "http",
+      "url": "https://mcp.artlist.io/mcp"
     }
   }
 }

@@ -1,9 +1,11 @@
 {
   "dependencies": {
     "@mediabunny/server": "^1.51.0",
+    "csv-parser": "^3.2.1",
     "mediabunny": "^1.51.0",
     "music-tempo": "^1.0.3",
     "package.json": "^2.0.1",
+    "replicate": "^1.4.0",
     "sharp": "^0.35.3"
   },
   "name": "editor-video",
@@ -16,5 +18,8 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "module"
+  "type": "module",
+  "allowScripts": {
+    "node-av@6.1.1": true
+  }
 }
