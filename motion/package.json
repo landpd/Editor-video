@@ -1,0 +1,28 @@
+{
+  "name": "pulppo-motion",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Pulppo luxury real estate video assembly engine — Remotion layer",
+  "scripts": {
+    "start": "remotion studio --no-open",
+    "build": "remotion render PropertyVideo out/property-video.mp4",
+    "still": "remotion still"
+  },
+  "dependencies": {
+    "@remotion/cli": "^4.0.0",
+    "@remotion/effects": "4.0.512",
+    "@remotion/google-fonts": "^4.0.0",
+    "@remotion/media": "^4.0.0",
+    "@remotion/renderer": "^4.0.0",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0",
+    "remotion": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.0",
+    "typescript": "^5.5.0"
+  },
+  "allowScripts": {
+    "esbuild@0.28.1": true
+  }
+}

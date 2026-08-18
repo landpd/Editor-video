@@ -13,3 +13,6 @@ output/rough_cut.xml
 /videos_generados/*.mp4
 .claude
 .agents
+assets/musica/*.*
+motion/public/*.mp4
+motion/src/cinematic-data.json

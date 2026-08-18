@@ -1,10 +1,11 @@
 // @ts-check
 import fs from 'node:fs/promises';
-import { existsSync, mkdirSync, copyFileSync } from 'node:fs';
+import { existsSync, mkdirSync, copyFileSync, readdirSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import csv from 'csv-parser';
 import { createReadStream } from 'node:fs';
+
 
 process.loadEnvFile();
 
@@ -87,13 +88,34 @@ function resolveLogoPath(companyName) {
   return null;
 }
 
+// Selección de pista de audio
+console.log('\n🎵 Seleccionando pista de audio aleatoria...');
+const ASSETS_MUSICA_DIR = path.join(__dirname, 'assets', 'musica');
+  if (existsSync(ASSETS_MUSICA_DIR)) {
+    const musicFiles = readdirSync(ASSETS_MUSICA_DIR).filter(f => f.toLowerCase().endsWith('.mp3'));
+    
+    if (musicFiles.length > 0) {
+      // Elegir una pista al azar
+      const randomMusic = musicFiles[Math.floor(Math.random() * musicFiles.length)];
+      const srcMusicPath = path.join(ASSETS_MUSICA_DIR, randomMusic);
+      const destMusicPath = path.join(MOTION_PUB, 'audio_background.mp3'); // ✅ Nombre fijo para Remotion
+      
+      copyFileSync(srcMusicPath, destMusicPath);
+      console.log(`   ✅ Audio copiado: ${randomMusic} → audio_background.mp3`);
+    } else {
+      console.warn('   ⚠️  No se encontraron archivos .mp3 en assets/musica/');
+    }
+  } else {
+    console.warn('   ⚠️  La carpeta assets/musica/ no existe.');
+  }
+
 // ── IA copywriting ─────────────────────────────────────────────────────────
 
 /**
  * Envía la descripción a OpenRouter y devuelve el JSON estructurado.
  *
- * @param {{ description: string, price: string, currency: string, street: string, suites: string, bathrooms: string }} data
- * @returns {Promise<object>}
+ * @param {{ description: string, price: string, currency: string, street: string, neighborhood: string, city: string, state: string, bedrooms: string, bathrooms: string, toilettes: string, parkings: string, surface: string }} data
+ * @returns {Promise<any>}
  */
 async function generateCopy(data) {
   const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
@@ -106,36 +128,50 @@ async function generateCopy(data) {
       model: MODEL,
       messages: [
         {
-            role: 'system',
-            content:
-              'Eres un Copywriter de bienes raíces de lujo. Crea un JSON con "hero" (title, subtitle, price) y "phrases" (array de 5 frases muy cortas y cinemáticas) basado en la descripción de la propiedad. ' +
-              'IMPORTANTE: Traduce los datos técnicos en ganchos de venta de alto valor. ' +
-              'Ejemplo: si tiene Toilettes (medios baños), destácalo. Si tiene gran superficie (TotalSurface), úsalo. ' +
-              'Las frases deben ser muy cortas (máximo 6 palabras) enfocadas en estilo de vida Premium.\n\n' +
-              'Estructura exacta del JSON de salida:\n' +
-              '{\n' +
-              '  "hero": {\n' +
-              '    "title": "CONCEPTO DE LUJO (ej. RESIDENCIA EN TETELPAN)",\n' +
-              '    "subtitle": "Dirección corta (ej. San Ángel, CDMX)",\n' +
-              '    "price": "Precio formateado"\n' +
-              '  },\n' +
-              '  "phrases": [\n' +
-              '    "Frase cinemática 1",\n' +
-              '    "Frase cinemática 2",\n' +
-              '    "Frase cinemática 3",\n' +
-              '    "Frase cinemática 4",\n' +
-              '    "Frase cinemática 5"\n' +
-              '  ],\n' +
-              '  "cobrand_logo": "logo_agencia.png"\n' +
-              '}'
-          },
+          role: 'system',
+          content:
+            'Eres un Director Creativo y Redactor de catálogos editoriales de arquitectura y diseño de ultra-lujo (como Architectural Digest). ' +
+            'Tu tarea es crear un JSON con textos cinemáticos y aspiracionales para un anuncio inmobiliario.\n\n' +
+            
+            '=== REGLAS DE REDACCIÓN (Estilo Tráiler de Cine) ===\n' +
+            '1. NO uses lenguaje inmobiliario genérico (ej. "lujo y confort", "excelente ubicación", "gran oportunidad").\n' +
+            '2. NO menciones datos aburridos de infraestructura en las frases (PROHIBIDO hablar de escuelas, vialidades, supervías, centros comerciales, cisternas o casetas de vigilancia).\n' +
+            '3. NO menciones el precio ni la moneda en el array "phrases". El precio solo va en "hero.price".\n' +
+            '4. Enfócate en la experiencia de habitar el espacio, el diseño, la luz, los materiales y la exclusividad.\n' +
+            '5. Las frases de "phrases" deben ser extremadamente cortas (máximo 5 o 6 palabras).\n' +
+            '   - EJEMPLOS BUENOS: "Espacios que invitan a moverte.", "Más que un espacio, un refugio propio.", "Un lugar icónico para vivir.", "Donde tu historia comienza.", "Detalles que enamoran."\n\n' +
+            
+            '=== REGLAS DEL TITLE ===\n' +
+            '- hero.title debe ser una frase atractiva corta, elegante y aspiracional. SIEMPRE iniciando con mayúscula (ej. "Algunos lugares son irrepetibles"). NUNCA uses mayúsculas sostenidas.\n\n' +
+            
+            'Estructura exacta del JSON de salida (sin markdown):\n' +
+            '{\n' +
+            '  "hero": {\n' +
+            '    "title": "Frase atractiva que inicia con mayúscula",\n' +
+            '    "subtitle": "Dirección corta",\n' +
+            '    "price": "Precio formateado"\n' +
+            '  },\n' +
+            '  "phrases": [\n' +
+            '    "Frase cinemática 1",\n' +
+            '    "Frase cinemática 2",\n' +
+            '    "Frase cinemática 3",\n' +
+            '    "Frase cinemática 4",\n' +
+            '    "Frase cinemática 5"\n' +
+            '  ],\n' +
+            '  "cobrand_logo": "logo_agencia.png"\n' +
+            '}'
+        },
         {
           role: 'user',
           content: [
-            { type: 'text', text: `Descripción: ${data.description}` },
-            { type: 'text', text: `Dirección: ${data.street}` },
-            { type: 'text', text: `Precio: ${data.price} ${data.currency}` },
-            { type: 'text', text: `Recámaras: ${data.suites}, Baños: ${data.bathrooms}` },
+            { type: 'text', text: `Descripción comercial detallada (amenidades, acabados, extras): ${data.description}` },
+            { type: 'text', text: `Calle y número: ${data.street}` },
+            { type: 'text', text: `Colonia o Zona: ${data.neighborhood}` },
+            { type: 'text', text: `Municipio o Alcaldía: ${data.city}` },
+            { type: 'text', text: `Estado: ${data.state}` },
+            { type: 'text', text: `Precio: ${data.price}` },
+            { type: 'text', text: `Características: ${data.bedrooms} recámaras, ${data.bathrooms} baños completos, ${data.toilettes} medios baños, ${data.parkings} estacionamientos.` },
+            { type: 'text', text: `Superficie total: ${data.surface} metros cuadrados.` }
           ],
         },
       ],
@@ -155,6 +191,16 @@ async function generateCopy(data) {
   return JSON.parse(cleaned);
 }
 
+/**
+ * Capitaliza estrictamente la primera letra de cualquier string.
+ * @param {string} str
+ * @returns {string}
+ */
+function capitalize(str) {
+  if (typeof str !== 'string' || !str) return '';
+  return str.trim().charAt(0).toUpperCase() + str.slice(1);
+}
+
 // ── Main ───────────────────────────────────────────────────────────────────
 
 async function main() {
@@ -170,6 +216,8 @@ async function main() {
   const currency = row['Listing: Price: Currency'] || 'MXN';
   const description = row['Listing: Description'] || '';
   const picturesRaw = row['Pictures'] || '[]';
+  const propertyType = row['Type'] || 'Propiedad';
+  const operation = row['Listing: Operation'] === 'sale' ? 'venta' : 'renta';
 
   // Atributos de la propiedad
   const suites = row['Attributes: Suites'] || '0'; // Recámaras
@@ -177,13 +225,17 @@ async function main() {
   const toilettes = row['Attributes: Toilettes'] || '0'; // Medios Baños
   const parkings = row['Attributes: Parkings'] || '0'; // Estacionamientos
   const surface = row['Attributes: TotalSurface'] || '0'; // m2 de Terreno
-
   const fullAddress = `${street}${neighborhood ? ', ' + neighborhood : ''}${city ? ', ' + city : ''}`;
-  const formattedPrice = `${currency === 'MXN' ? '$' : currency} ${Number(price).toLocaleString('es-MX')} ${currency}`;
+  
+  const cleanPrice = String(price).replace(/,/g, '').trim();
+  const formattedPrice = `${currency === 'MXN' ? '$' : currency} ${Number(cleanPrice).toLocaleString('es-MX')} ${currency}`;
+  
+  const dynamicSubtitle = `${propertyType} en ${operation} en ${neighborhood}`;
 
   console.log(`🏠 Propiedad: ${fullAddress}`);
   console.log(`💵 Precio: ${formattedPrice}`);
   console.log(`🏢 Agencia: ${companyName}`);
+  console.log(`🏘️  Tipo: ${propertyType} · ${operation} · ${neighborhood}${city ? ', ' + city : ''}${state ? ', ' + state : ''}`);
   console.log(`🛏️  ${suites} Rec. | 🚽 ${bathrooms} Baños | 🧻 ${toilettes} Medios Baños | 🚗 ${parkings} Estac. | 📐 ${surface} m²\n`);
 
   // 2. Descargar imágenes
@@ -197,22 +249,27 @@ async function main() {
   const urls = [...picturesRaw.matchAll(/:url "([^"]+)"/g)].map(m => m[1]);
   console.log(`   ${urls.length} imágenes encontradas`);
 
-  let downloaded = 0;
-  for (let i = 0; i < urls.length; i++) {
-    const ext = path.extname(new URL(urls[i]).pathname) || '.jpg';
+  // 1. Mapeamos las descargas para que inicien TODAS al mismo tiempo (en paralelo)
+  const downloadPromises = urls.map(async (url, i) => {
+    const ext = path.extname(new URL(url).pathname) || '.jpg';
     const outputName = `foto_${String(i + 1).padStart(2, '0')}${ext}`;
     const outputPath = path.join(FOTOS_DIR, outputName);
 
     try {
-      console.log(`   ⬇️  [${i + 1}/${urls.length}] ${outputName}`);
-      await downloadImage(urls[i], outputPath);
-      downloaded++;
+      await downloadImage(url, outputPath);
+      console.log(`   ✅ Descargada: ${outputName}`);
+      return true; // Éxito
     } catch (/** @type {any} */ err) {
-      console.warn(`   ⚠️  Error descargando ${urls[i]}: ${err.message}`);
-      process.exit(1);
+      console.warn(`   ⚠️  Error descargando ${outputName} (${url}): ${err.message}`);
+      return false; // Falló, pero no detiene el pipeline
     }
-  }
-  console.log(`   ✅ ${downloaded}/${urls.length} imágenes descargadas`);
+  });
+
+  // 2. Esperamos a que todo el paquete de descargas se complete en paralelo
+  const results = await Promise.all(downloadPromises);
+  const downloaded = results.filter(Boolean).length;
+  
+  console.log(`\n   🎉 ${downloaded}/${urls.length} imágenes descargadas con éxito en paralelo.`);
 
   // 3. Resolver logo
   console.log('\n🏷️  Resolviendo logo...');
@@ -229,15 +286,43 @@ async function main() {
   // 4. IA - Copywriting
   console.log('\n✍️  Generando copy con IA...');
   try {
+    /** @type {any} */
     const copyResult = await generateCopy({
-      description, price, currency, street,
-      suites, 
+      description,
+      price: formattedPrice,
+      currency,
+      street,        // ✅ Calle sola (Medicina 24)
+      neighborhood,  // ✅ Colonia (Lomas Anáhuac)
+      city,          // ✅ Municipio/Alcaldía (Huixquilucan)
+      state,         // ✅ Estado (Edo. de México)
+      bedrooms: suites,
       bathrooms,
+      toilettes, 
+      parkings,  
+      surface,   
     });
+
+    // Merge IA output with our location data + dynamic subtitle
+    const finalData = {
+      hero: {
+        title: capitalize(copyResult.hero?.title || 'propiedad de lujo'),
+        subtitle: dynamicSubtitle,
+        price: formattedPrice,
+      },
+      location: {
+        neighborhood,
+        city,
+        state,
+      },
+      phrases: (Array.isArray(copyResult.phrases) ? copyResult.phrases.slice(0, 5) : [])
+        .map(capitalize),
+      cobrand_logo: 'logo_agencia.png',
+    };
+
     mkdirSync(MOTION_SRC, { recursive: true });
     await fs.writeFile(
       path.join(MOTION_SRC, 'cinematic-data.json'),
-      JSON.stringify(copyResult, null, 2),
+      JSON.stringify(finalData, null, 2),
       'utf-8'
     );
     console.log(`   ✅ cinematic-data.json generado`);
@@ -247,11 +332,17 @@ async function main() {
     // Fallback: escribir un JSON mínimo
     const fallback = {
       hero: {
-        title: `${companyName}`,
-        subtitle: street,
-        price: `${price} ${currency}`,
+        title: 'una propiedad excepcional',
+        subtitle: dynamicSubtitle,
+        price: formattedPrice,
       },
-      phrases: ['Propiedad única', 'Ubicación privilegiada', 'Diseño excepcional'],
+      location: {
+        neighborhood,
+        city,
+        state,
+      },
+      phrases: ['Diseño excepcional', 'Ubicación privilegiada', 'Calidad de vida'],
+      cobrand_logo: 'logo_agencia.png',
     };
     mkdirSync(MOTION_SRC, { recursive: true });
     await fs.writeFile(

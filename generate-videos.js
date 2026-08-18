@@ -9,7 +9,7 @@ process.loadEnvFile();
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PHOTOS_DIR = path.join(__dirname, 'fotos');
-const VIDEOS_DIR = path.join(__dirname, 'videos_generados');
+const VIDEOS_FOLDER = path.resolve('./motion/public');
 const replicate = new Replicate({
   auth: process.env.REPLICATE_API_TOKEN,
   useFileOutput: false,

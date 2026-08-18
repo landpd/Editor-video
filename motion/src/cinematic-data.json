@@ -1,15 +1,20 @@
 {
   "hero": {
-    "title": "VIVIENDA EXCLUSIVA EN HUIXQUILUCAN",
-    "subtitle": "Cerrada de Medicina, Huixquilucan",
-    "price": "$20,000,000 MXN"
+    "title": "Un refugio de serenidad y diseño",
+    "subtitle": "Casa en condominio en venta en Lomas AnAhuac",
+    "price": "$ 20,000,000 MXN"
+  },
+  "location": {
+    "neighborhood": "Lomas AnAhuac",
+    "city": "Huixquilucan",
+    "state": "Edo. de México"
   },
   "phrases": [
-    "Seguridad 24/7, tranquilidad garantizada.",
-    "Arquitectura que abraza tu estilo.",
-    "Espacios independientes, calidez familiar.",
-    "Vivencias premium a tu alcance.",
-    "El lujo encuentra su hogar aquí."
+    "Donde la arquitectura cobra vida.",
+    "Espacios que invitan a soñar.",
+    "El arte de vivir en armonía.",
+    "Calidez y diseño en cada rincón.",
+    "Un hogar que cuenta historias."
   ],
   "cobrand_logo": "logo_agencia.png"
 }
