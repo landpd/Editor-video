@@ -36,7 +36,7 @@ El pipeline de producción se divide en 4 fases desacopladas, ejecutadas por `au
 4. **Fase 4 (Renderizado de Overlays — Remotion):** `npx remotion render`
    - Resolución final: **720×1280** (vertical HD) a **30 fps**.
    - 6 clips × 75 frames = **450 frames totales** (15 segundos).
-   - Título cinemático en EB Garamond itálica 4rem con subrayado dorado `#C59B6C`.
+   - Título cinemático en EB Garamond regular con subrayado en amarillo Pulppo `#f6be00`.
    - Frases centradas en EB Garamond regular con sombra de texto.
    - Pin de mapa SVG animado en amarillo Pulppo `#f6be00` con dirección en 3 líneas.
    - Logo de agencia revelado con desenfoque (blur 20→0) + filtro `brightness(0) invert(1)`.
