@@ -104,10 +104,10 @@ function selectPhotos(analisis, isV2) {
 
 async function main() {
   const versionArg = process.argv[2];
-  const modelArg = process.argv[3] || 'kling';
+  const modelArg = process.argv[3] || 'seedance';
   const isV2 = versionArg === 'v2';
 
-  const modelConfig = MODELS[modelArg] ?? MODELS.kling;
+  const modelConfig = MODELS[modelArg] ?? MODELS.seedance;
   console.log(`\n${'='.repeat(60)}`);
   console.log(`🎬  MODO: ${isV2 ? 'V2 (segunda mejor opción)' : 'V1 (mejor opción)'}`);
   console.log(`🤖  MODELO: ${modelConfig.label} (${modelConfig.id})`);

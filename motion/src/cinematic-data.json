@@ -1,20 +1,20 @@
 {
   "hero": {
-    "title": "Un refugio urbano en Polanco",
-    "subtitle": "Departamento en venta en Polanco V Sección",
-    "price": "$ 13,990,000 MXN"
+    "title": "Espacios donde la vida florece.",
+    "subtitle": "Casa en condominio en venta en Lomas AnAhuac",
+    "price": "$ 20,000,000 MXN"
   },
   "location": {
-    "neighborhood": "Polanco V Sección",
-    "city": "Miguel Hidalgo",
-    "state": "Ciudad de México"
+    "neighborhood": "Lomas AnAhuac",
+    "city": "Huixquilucan",
+    "state": "Edo. de México"
   },
   "phrases": [
-    "Espacios que invitan a soñar.",
-    "Donde la luz cuenta historias.",
-    "Tu oasis en la ciudad.",
-    "Una experiencia sin igual.",
-    "Vivir la elegancia en cada rincón."
+    "Donde la arquitectura abraza la vida.",
+    "Un refugio de serenidad y estilo.",
+    "Cada rincón, un susurro de diseño.",
+    "Luz que transforma, materiales que inspiran.",
+    "La esencia de la exclusividad."
   ],
   "cobrand_logo": "logo_agencia.png"
 }

@@ -22,7 +22,7 @@ El pipeline de producción se divide en 4 fases desacopladas:
 3. **Fase 3 (Generación de Video GenAI):** `generate-videos.js`
    - Lee la selección de fotos.
    - Recorta las imágenes a un formato cuadrado maestro (1:1) de `1280x1280` con `sharp` para optimizar costos de API y evitar deformación de perspectiva (*morphing*).
-   - Consume la API de Replicate (`prunaai/p-video` o `kling-ai/kling-v1.6-standard`) de forma idempotente (omite clips ya generados).
+   - Consume la API de Replicate (`prunaai/p-video` o `bytedance/seedance-1.5-pro`) de forma idempotente (omite clips ya generados).
    - Descarga los clips generados directamente en `./motion/public/toma_01.mp4` a `toma_06.mp4`.
 
 4. **Fase 4 (Renderizado de Overlays):** `Remotion Engine`
