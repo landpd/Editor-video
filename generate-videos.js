@@ -172,93 +172,105 @@ async function main() {
     console.log(`🎥 [${i + 1}/${photos.length}] ${filename}`);
     console.log(`   Movimiento: ${movement}`);
 
-    try {
-      // ── Pre-procesamiento: Sharp → Data URI ─────────────────────────────
-      console.log(`   🖼️  Recortando a 1280×1280...`);
-      const jpegBuffer = await sharp(filePath)
-        .resize(1280, 1280, { fit: 'cover' })
-        .jpeg({ quality: 80 })
-        .toBuffer();
+    // ── Self-healing: hasta 3 intentos por toma ────────────────────────────
+    for (let attempt = 1; attempt <= 3; attempt++) {
+      try {
+        // ── Pre-procesamiento: Sharp → Data URI ─────────────────────────────
+        console.log(`   🖼️  Recortando a 1280×1280...`);
+        const jpegBuffer = await sharp(filePath)
+          .resize(1280, 1280, { fit: 'cover' })
+          .jpeg({ quality: 80 })
+          .toBuffer();
 
-      const dataUri = `data:image/jpeg;base64,${jpegBuffer.toString('base64')}`;
+        const dataUri = `data:image/jpeg;base64,${jpegBuffer.toString('base64')}`;
 
-      const negativePrompt = 'deformed, distorted, morphing, low quality, bad lighting, blurry, unrealistic, extra windows, moving furniture, changing wall textures, shaky camera, noisy, digital artifacts, bad proportions.';
+        const negativePrompt = 'deformed, distorted, morphing, low quality, bad lighting, blurry, unrealistic, extra windows, moving furniture, changing wall textures, shaky camera, noisy, digital artifacts, bad proportions.';
 
-      // ── Llamada a Replicate ──────────────────────────────────────────────
-      console.log(`   🚀 Enviando a Replicate (${modelConfig.label})...`);
+        // ── Llamada a Replicate ──────────────────────────────────────────────
+        console.log(`   🚀 Enviando a Replicate (${modelConfig.label})...`);
 
-      const input = {
-        prompt: finalPrompt,
-        aspect_ratio: '1:1',
-        duration: 5,
-      };
+        const input = {
+          prompt: finalPrompt,
+          aspect_ratio: '1:1',
+          duration: 5,
+        };
 
-      if (modelArg === 'seedance') {
-        input.image = dataUri;
-        input.fps = 24;
-        input.resolution = '720p';
-        input.camera_fixed = false;
-        input.generate_audio = false;
-      } else if (modelArg === 'pruna') {
-        input.image = dataUri;
-        input.resolution = '720p';
-        input.fps = 24;
-        input.draft = false;
-        input.no_op = false;
-        input.save_audio = false;
-        input.prompt_upsampling = false;
-        input.disable_safety_filter = true;
-      } else {
-        input.start_image = dataUri;
-        input.cfg_scale = 0.4;
-        input.negative_prompt = negativePrompt;
-      }
+        if (modelArg === 'seedance') {
+          input.image = dataUri;
+          input.fps = 24;
+          input.resolution = '720p';
+          input.camera_fixed = false;
+          input.generate_audio = false;
+        } else if (modelArg === 'pruna') {
+          input.image = dataUri;
+          input.resolution = '720p';
+          input.fps = 24;
+          input.draft = false;
+          input.no_op = false;
+          input.save_audio = false;
+          input.prompt_upsampling = false;
+          input.disable_safety_filter = true;
+        } else {
+          input.start_image = dataUri;
+          input.cfg_scale = 0.4;
+          input.negative_prompt = negativePrompt;
+        }
 
-      // ── Llamada a Replicate con reintentos por rate-limit ──────────────
-      let output;
-      for (let attempt = 1; attempt <= 3; attempt++) {
-        try {
-          output = await replicate.run(modelConfig.id, { input });
-          break;
-        } catch (err) {
-          if (err.status === 429 && attempt < 3) {
-            const waitMs = err.headers?.['retry-after']
-              ? parseInt(err.headers['retry-after'], 10) * 1000
-              : 20_000;
-            console.warn(`   ⚠️  Rate limit (429), reintento ${attempt}/3 — esperando ${waitMs / 1000}s...`);
-            await sleep(waitMs);
-            continue;
+        // ── Llamada a Replicate con reintentos por rate-limit ──────────────
+        let output;
+        for (let rateAttempt = 1; rateAttempt <= 3; rateAttempt++) {
+          try {
+            output = await replicate.run(modelConfig.id, { input });
+            break;
+          } catch (err) {
+            if (err.status === 429 && rateAttempt < 3) {
+              const waitMs = err.headers?.['retry-after']
+                ? parseInt(err.headers['retry-after'], 10) * 1000
+                : 20_000;
+              console.warn(`   ⚠️  Rate limit (429), reintento ${rateAttempt}/3 — esperando ${waitMs / 1000}s...`);
+              await sleep(waitMs);
+              continue;
+            }
+            throw err;
           }
-          throw err;
+        }
+
+        // ── URL extraction ───────────────────────────────────────────────────
+        const videoUrl = Array.isArray(output) ? output[0] : output;
+
+        console.log(`   ⬇️  Descargando video desde Replicate...`);
+        const res = await fetch(videoUrl);
+        if (!res.ok) throw new Error(`Descarga falló (${res.status})`);
+
+        const buffer = Buffer.from(await res.arrayBuffer());
+        await fs.writeFile(outputPath, buffer);
+
+        console.log(`   ✅ Video guardado → ${outputName}`);
+
+        // ── Delay de cortesía: 10s entre peticiones ────────────────────────────
+        if (i < photos.length - 1) {
+          console.log(`   ⏳ Delay de cortesía 10s para evitar rate-limit...`);
+          await sleep(10_000);
+        }
+
+        success++;
+        break; // Intento exitoso → sale del bucle self-healing
+      } catch (err) {
+        if (attempt < 3) {
+          console.warn(`\n⚠️  [Intento ${attempt}/3 Falló] para ${filename}. Error: ${err.message}`);
+          console.warn(`   ⏳ Esperando 15s antes de reintentar...\n`);
+          await sleep(15_000);
+          // Siguiente intento
+        } else {
+          console.error(`\n❌ [Intento 3/3 Falló] para ${filename}. Error fatal: ${err.message}`);
+          throw err; // Fatal → detiene todo el script
         }
       }
-
-      // ── URL extraction (useFileOutput: false → string o array de strings) ─
-      const videoUrl = Array.isArray(output) ? output[0] : output;
-
-      console.log(`   ⬇️  Descargando video desde Replicate...`);
-      const res = await fetch(videoUrl);
-      if (!res.ok) throw new Error(`Descarga falló (${res.status})`);
-
-      const buffer = Buffer.from(await res.arrayBuffer());
-      await fs.writeFile(outputPath, buffer);
-
-      console.log(`   ✅ Video guardado → ${outputName}`);
-
-      // ── Delay de cortesía: 10s entre peticiones ────────────────────────────
-      if (i < photos.length - 1) {
-        console.log(`   ⏳ Delay de cortesía 10s para evitar rate-limit...`);
-        await sleep(10_000);
-      }
-
-      success++;
-    } catch (err) {
-      console.error(`   ❌ Error: ${err.message}`);
-    }
+    } // fin self-healing loop
   }
 
   console.log(`\n${'='.repeat(60)}`);
-  console.log(`🏁 ${success}/${photos.length} videos generados en ${VIDEOS_DIR}`);
+  console.log(`🏁 ${success}/${photos.length} videos generados en ${VIDEOS_FOLDER}`);
   console.log(`${'='.repeat(60)}\n`);
 }
 

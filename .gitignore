@@ -26,3 +26,5 @@ motion/node_modules/
 motion/public/logo_agencia.png
 motion/public/audio_background.mp3
 motion/public/toma_*.mp4
+motion/public/*.mp3
+motion/public/audio_background.mp3
