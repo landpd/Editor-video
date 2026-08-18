@@ -16,7 +16,7 @@ El pipeline de producción se divide en 4 fases desacopladas:
    - Selecciona un track de audio aleatorio de `./assets/musica/`, mide su duración exacta con `mediabunny` y lo copia como `audio_background.mp3`.
 
 2. **Fase 2 (Curaduría/Triage):** `triage-photos.js`
-   - Envía las imágenes en Base64 (optimizadas a 512px con `sharp`) a OpenRouter (`openai/gpt-4o-mini`) para su clasificación, baneo y puntuación.
+   - Envía las imágenes en Base64 (optimizadas a 512px con `sharp`) a OpenRouter (`gemini-2.5-flash-lite`) para su clasificación, baneo y puntuación.
    - Selecciona las 6 mejores tomas únicas bajo un criterio estricto de jerarquía y variedad.
 
 3. **Fase 3 (Generación de Video GenAI):** `generate-videos.js`
