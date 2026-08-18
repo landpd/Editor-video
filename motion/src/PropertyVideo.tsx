@@ -2,7 +2,6 @@ import React from "react";
 import { AbsoluteFill, Sequence, staticFile, Video } from "remotion";
 import { Audio } from "@remotion/media";
 import { loadFont } from "@remotion/google-fonts/EBGaramond";
-import { loadFont as loadNunito } from "@remotion/google-fonts/NunitoSans";
 
 import type { PropertyVideoProps } from "./types";
 import { TIMING } from "./types";
@@ -13,10 +12,6 @@ import { Watermark } from "./Watermark";
 
 const { fontFamily: ebGaramond } = loadFont("normal", {
   weights: ["400"],
-  subsets: ["latin"],
-});
-const { fontFamily: nunitoSans } = loadNunito("normal", {
-  weights: ["400", "600"],
   subsets: ["latin"],
 });
 

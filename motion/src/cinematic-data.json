@@ -1,20 +1,20 @@
 {
   "hero": {
-    "title": "Un refugio de serenidad y diseño",
-    "subtitle": "Casa en condominio en venta en Lomas AnAhuac",
-    "price": "$ 20,000,000 MXN"
+    "title": "Donde el estilo cobra vida",
+    "subtitle": "Departamento en venta en Polanco V Sección",
+    "price": "$ 13,990,000 MXN"
   },
   "location": {
-    "neighborhood": "Lomas AnAhuac",
-    "city": "Huixquilucan",
-    "state": "Edo. de México"
+    "neighborhood": "Polanco V Sección",
+    "city": "Miguel Hidalgo",
+    "state": "Ciudad de México"
   },
   "phrases": [
-    "Donde la arquitectura cobra vida.",
-    "Espacios que invitan a soñar.",
-    "El arte de vivir en armonía.",
-    "Calidez y diseño en cada rincón.",
-    "Un hogar que cuenta historias."
+    "Un refugio de luminosidad.",
+    "Diseño que inspira tranquilidad.",
+    "Espacios que cuentan tu historia.",
+    "Terrazas para momentos inolvidables.",
+    "Donde la vida se celebra."
   ],
   "cobrand_logo": "logo_agencia.png"
 }

@@ -39,27 +39,14 @@ const INTERIOR_MOVEMENTS = [
   'Slow and natural handheld walk, smoothly sliding sideways across the room, elegant lateral tracking shot',
 ];
 
-// ── A/B Testing: Selección de fotos ────────────────────────────────────────
+// ── Mapeo directo desde room_type de triage-photos.js ────────────────────
 
-const AMBIENTE_MAP = {
-  facade:      ['Exterior'],
-  living_room: ['Sala', 'Comedor', 'Sala de TV'],
-  kitchen:     ['Cocina'],
-  bedroom:     ['Recámara', 'Recámara Principal'],
-  balcony:     [],
-  amenities:   [],
-  bathroom:    ['Baño'],
-  closet:      ['Vestidor'],
-  hallway:     ['Pasillo'],
-};
-
-const PRIORITY = ['facade', 'living_room', 'kitchen', 'bedroom', 'balcony', 'amenities', 'bathroom', 'closet', 'hallway'];
+const PRIORITY = ['facade', 'exterior_social', 'interior_social', 'bedroom', 'bathroom', 'hallway'];
 
 /**
- * Elige 6 archivos de foto desde el array analisis aplicando la lógica de
- * versión (v1 = mejor foto de cada ambiente, v2 = segunda mejor).
+ * Elige 6 archivos desde el array analisis, priorizando variedad de room_type.
  *
- * @param {Array<{ archivo: string, ambiente: string, puntuacion: number }>} analisis
+ * @param {Array<{ archivo: string, room_type: string, puntuacion: number }>} analisis
  * @param {boolean} isV2
  * @returns {string[]} 6 nombres de archivo.
  */
@@ -67,8 +54,9 @@ function selectPhotos(analisis, isV2) {
   /** @type {Record<string, Array<{ archivo: string, puntuacion: number }>>} */
   const groups = {};
   for (const item of analisis) {
-    if (!groups[item.ambiente]) groups[item.ambiente] = [];
-    groups[item.ambiente].push({ archivo: item.archivo, puntuacion: item.puntuacion });
+    const key = item.room_type || 'interior_social';
+    if (!groups[key]) groups[key] = [];
+    groups[key].push({ archivo: item.archivo, puntuacion: item.puntuacion });
   }
 
   for (const key of Object.keys(groups)) {
@@ -80,13 +68,7 @@ function selectPhotos(analisis, isV2) {
 
   for (const priority of PRIORITY) {
     if (selected.size >= 6) break;
-
-    const spanishNames = AMBIENTE_MAP[priority];
-    const candidates = [];
-    for (const name of spanishNames) {
-      const group = groups[name];
-      if (group) candidates.push(...group);
-    }
+    const candidates = groups[priority] || [];
     if (candidates.length === 0) continue;
 
     const idx = isV2 ? 1 : 0;
@@ -96,6 +78,7 @@ function selectPhotos(analisis, isV2) {
     }
   }
 
+  // Llenar hasta 6 con las mejores restantes
   if (selected.size < 6) {
     const remaining = analisis
       .filter(a => !selected.has(a.archivo))
@@ -111,7 +94,7 @@ function selectPhotos(analisis, isV2) {
   console.log(`  📋 ${isV2 ? 'V2' : 'V1'} — ${result.length} fotos seleccionadas:`);
   for (const f of result) {
     const info = analisis.find(a => a.archivo === f);
-    console.log(`     ${f}  (${info?.ambiente} — ${info?.puntuacion}/10)`);
+    console.log(`     ${f}  (${info?.room_type} — ${info?.puntuacion}/10)`);
   }
 
   return result;
@@ -154,7 +137,7 @@ async function main() {
   console.log(`\n💾 seleccion_final actualizada en ${selectedPath}\n`);
 
   // 4. Generar videos
-  if (!existsSync(VIDEOS_DIR)) mkdirSync(VIDEOS_DIR, { recursive: true });
+  if (!existsSync(VIDEOS_FOLDER)) mkdirSync(VIDEOS_FOLDER, { recursive: true });
 
   let success = 0;
 
@@ -162,7 +145,7 @@ async function main() {
     const filename = photos[i];
     const filePath = path.join(PHOTOS_DIR, filename);
     const outputName = `toma_0${i + 1}.mp4`;
-    const outputPath = path.join(VIDEOS_DIR, outputName);
+    const outputPath = path.join(VIDEOS_FOLDER, outputName);
 
     // ── Idempotencia ──────────────────────────────────────────────────────
     try {

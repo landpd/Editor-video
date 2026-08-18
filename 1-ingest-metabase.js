@@ -328,8 +328,7 @@ async function main() {
     console.log(`   ✅ cinematic-data.json generado`);
   } catch (/** @type {any} */ err) {
     console.error(`   ❌ Error generando copy: ${err.message}`);
-    process.exit(1);
-    // Fallback: escribir un JSON mínimo
+    // Fallback: escribir un JSON mínimo antes de salir
     const fallback = {
       hero: {
         title: 'una propiedad excepcional',
@@ -351,6 +350,7 @@ async function main() {
       'utf-8'
     );
     console.log(`   ⚠️  Fallback escrito`);
+    process.exit(1);
   }
 
   console.log('\n✅ Fase 1 completada.');

@@ -16,3 +16,13 @@ output/rough_cut.xml
 assets/musica/*.*
 motion/public/*.mp4
 motion/src/cinematic-data.json
+input/*.csv
+node_modules/
+.env
+fotos/
+videos_generados/
+output/
+motion/node_modules/
+motion/public/logo_agencia.png
+motion/public/audio_background.mp3
+motion/public/toma_*.mp4
